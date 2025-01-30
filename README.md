@@ -180,34 +180,47 @@ Login to DC-1 as Kane_admin
 -  Make sure the OU path matches your AD structure
 -  Run the script and watch users being created!
 -  Try logging into Client-1 with one of the new users
+
 ![](https://i.imgur.com/Q5s976v.png)
 ![](https://github.com/user-attachments/assets/fec2dcff-6282-4988-b1b1-27811ecfa9b4)
 ![image](https://github.com/user-attachments/assets/99382a2b-cdd9-4794-a1ff-7c79bfd98446)
 
 #### Implementing Security And Account Lockouts
+
 Configure Account Lockout Policy
-On DC-1, open Group Policy Management (gpmc.msc)
+On DC-1, open Group Policy Management (w + R gpmc.msc)
+-  Expand forest > expand domain > expand your system domain (mydoman.com) > eidit dafault domain policies atterch to your domain
 Navigate to:
 -  Computer Configuration → Policies → Windows Settings → Security Settings → Account Lockout Policy
 -  Set these values:
   -  Lockout Duration: 30 minutes
-- -  Lockout Threshold: 3 failed logins
+  -  Lockout Threshold: 5 failed logins
   -  Reset Counter After: 10 minutes
   -  Apply the GPO to the domain
--  -  Run gpupdate /force to apply changes
-https://i.imgur.com/TzRO6H1.png
-https://i.imgur.com/a2cTkAA.png
+  -  Run gpupdate /force to apply changes
+
+![](https://i.imgur.com/TzRO6H1.png)
+![](https://i.imgur.com/a2cTkAA.png)
+![](https://i.imgur.com/F9IZkPL.png)
+![image](https://github.com/user-attachments/assets/6727c2c9-f22d-4c70-ac36-2a6b08d145f6)
+
+
 ###  Test Account Lockout
 Try logging in 6 times with a wrong password
--  Check ADUC → Find the locked user
--  Right-click → Unlock Account
+-  Check ADUC → Find the locked user (right click mydomin.com, find the usesr)
+-  double-click the usesr → Account > Check the unlock
 -  Try logging in again
+
+![image](https://github.com/user-attachments/assets/0be13336-1be8-4a37-af4c-56f5f653e171)
+![](https://i.imgur.com/MRXFfSP.png)
 
 ###  Monitor Security Logs
 -  Open Event Viewer (eventvwr.msc)
--  Go to Windows Logs → Security
+-  Go to Windows Logs → Security you can right click to search for what you looking for 
 -  Look for login failures and account lockouts
 -   You’ve now configured security policies and tested account lockouts!
+
+![](https://i.imgur.com/tlpilmU.png)
 
 Congratulations! You have implementated on-premises Active Directory and created users within an Azure virtual machine! and Hace also set login permission
 
