@@ -50,6 +50,8 @@ Click Review + Create → Create
 Set its Private IP to Static
 -  (Go to Networking → Network Interface → ipconfig → Change to Static)
 -  Log into DC-1 and Disable Windows Firewall
+-  Start > Windows Administrative Tools > Windows Defender Firewall with Advanced Security > Inbound Rules
+  Sort the list by protocols
 -  Find "Core Networking Diagnostics" and "ICMPv4", enable these two inbound rules
    (for easier connectivity testing)
 
